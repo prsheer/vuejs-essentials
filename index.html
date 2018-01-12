@@ -16,9 +16,14 @@
       color: #292a2b;
       font-family: Arial;
     }
+    .isLoading {
+      background: #172706;
+      color: #e7e7e7;
+    }
   </style>
 </head>
 <body>
+<!------------------------- 1 ------------------------------------>
   <div id="wrapper">
     <h1>1.</h1>
     <h3>Vuejs essentials - usemenu</h3>
@@ -29,6 +34,7 @@
     </div>
   </div>
   <hr>
+<!------------------------- 3 ------------------------------------>
   <div id="wrapper1">
     <h1>2.</h1>
     <h3>Vue Event Listeners</h3>
@@ -39,10 +45,11 @@
     <input type="text" v-model="newName" @keyup.enter="addName">
     <button @click="addName">Add Name</button>
   </div>
-
   <hr>
+<!------------------------- 4 ------------------------------------>
   <div id="wrapper2">
     <h1>3.</h1>
+    <button :class="{ 'isLoading': isLoading }" @click="toogleClass">Click me</button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script>
@@ -70,6 +77,17 @@
     })
 
     /*************** 3. **********************/
+    new Vue({
+      el: '#wrapper2',
+      data: {
+        isLoading: false
+      },
+      methods: {
+        toogleClass () {
+          this.isLoading = !this.isLoading;
+        }
+      }
+    })
   </script>
 </body>
 </html>
