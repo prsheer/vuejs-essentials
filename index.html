@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vuejs::USEMENU</title>
+  <style>
+    body {
+      background: #172706;
+    }
+    div#wrapper,
+    div#wrapper1,
+    div#wrapper2 {
+      width: 960px;
+      margin: 0 auto;
+      background-color: #e7e7e7;
+      padding: 20px;
+      color: #292a2b;
+      font-family: Arial;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>1.</h1>
+    <h3>Vuejs essentials - usemenu</h3>
+    <div class="data-binding">
+      <h4>Basic data binding</h4>
+      <p>v-model se koristi prilikom vezivanja elemenata forme. {{ message }}</p>
+      <input type="text" id="input" v-model="message">
+    </div>
+  </div>
+  <hr>
+  <div id="wrapper1">
+    <h1>2.</h1>
+    <h3>Vue Event Listeners</h3>
+    <p>- klick na button, pozivanje metode, vezivanje inputa sa v-model direktivom za li.name property, v-on:koristimo bilo koji native javascript event, npr, koriscenje enter key-a.</p>
+    <ul>
+      <li v-for="name in names" v-text="name"></li>
+    </ul>
+    <input type="text" v-model="newName" @keyup.enter="addName">
+    <button @click="addName">Add Name</button>
+  </div>
+
+  <hr>
+  <div id="wrapper2">
+    <h1>3.</h1>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    /*************** 1 **********************/
+    new Vue({
+      el: '#wrapper',
+      data: {
+        message: 'Hello World'
+      }
+    })
+
+    /*************** 2. **********************/
+    new Vue({
+      el: '#wrapper1',
+      data: {
+        newName: '',
+        names: ['Item 1', 'Item 2', 'Item 3', 'Item4']
+      },
+      methods: {
+        addName () {
+          this.names.push( this.newName )
+          this.newName = ''
+        }
+      }
+    })
+
+    /*************** 3. **********************/
+  </script>
+</body>
+</html>
